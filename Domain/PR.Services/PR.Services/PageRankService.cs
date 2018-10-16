@@ -2,7 +2,7 @@
 
 namespace PR.Services
 {
-    public class Class1
+    public class PageRankService
     {
     }
 }
