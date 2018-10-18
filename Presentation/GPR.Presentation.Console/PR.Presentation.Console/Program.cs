@@ -1,4 +1,5 @@
 ﻿using System;
+using PR.Services;
 
 namespace PR.Presentation.Terminal
 {
@@ -6,7 +7,15 @@ namespace PR.Presentation.Terminal
     {
         static void Main(string[] args)
         {
-             Console.WriteLine("Hello World!");
+            var services = new PageRankService();
+            var vector = services.PageRank();
+
+            for (int i = 0; i < 8; i++)
+            {
+                Console.WriteLine(vector[i]+ "\n");
+            }
+  
+             
         }
     }
 }
