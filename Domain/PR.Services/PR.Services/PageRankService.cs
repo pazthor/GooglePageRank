@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 namespace PR.Services
 {
@@ -19,7 +20,7 @@ namespace PR.Services
             {1.0/2.0,0,1.0/2.0,1.0/3.0,0,0,0,0},
             {1.0/2.0,0,0,0,0,0,0,0},
             {0,1.0,0,0,0,0,0,0},
-            {0,0,1.0/2.0,1.0/3.0,0,0,1.0/3.0,0}, // fila 5
+            {0,0,1.0/2.0,1.0/3.0,0,0,1.0/3.0,0}, 
             {0,0,0,1.0/3.0,1.0/3.0,0,0,1.0/2.0},
             {0,0,0,0,1.0/3.0,0,0,1.0/2.0},
             {0,0,0,0,1.0/3.0,1.0,1.0/3.0,0}
@@ -49,6 +50,47 @@ namespace PR.Services
             }
 
             return vectorRes;
+        }
+
+        /// <summary>
+        /// Matrix binaria indicando relaciones del grafo.
+        /// </summary>
+        /// <param name="Matrix"></param>
+        /// <returns></returns>
+        public double[,] PageRank(double[,] matrix)
+        {
+            
+            return new double[20, 20];
+        }
+
+        public int[,] ReadMatrix()
+        {
+            try
+            {
+                var input = File.ReadAllText("/Users/pazth/Projects/GooglePageRank/webGraph.txt");
+                int[,] result = new int[10, 10];
+                var j = 0;
+                var i = 0;
+                foreach (var row in input.Split('\n'))
+                {
+                    j = 0; 
+                    foreach (var col in row.Trim().Split(' '))
+                    {
+                        result[i, j] = int.Parse(col.Trim());
+                        j++;
+                    }
+                    i++;
+                }
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            } 
+            
+            
         }
 
         public double[] MultiplicarMatrizVector(double[,] matrix, double[] vector, int sizeRow)

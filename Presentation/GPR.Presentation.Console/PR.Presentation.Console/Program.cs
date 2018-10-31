@@ -8,14 +8,15 @@ namespace PR.Presentation.Terminal
         static void Main(string[] args)
         {
             var services = new PageRankService();
-            var vector = services.PageRank();
+            var matrix = services.ReadMatrix();
 
             for (int i = 0; i < 8; i++)
             {
-                Console.WriteLine(vector[i]+ "\n");
+                for (int j = 0; j < 8; j++)
+                {
+                    Console.WriteLine(matrix[i,j]+ "\n");
+                }   
             }
-  
-             
         }
     }
 }
